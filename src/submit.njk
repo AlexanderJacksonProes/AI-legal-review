@@ -1,0 +1,43 @@
+---
+layout: layouts/base.njk
+title: Submit
+description: How students and invited contributors can submit work on artificial intelligence and the law to The AI Legal Review.
+permalink: /submit/
+---
+<header class="page-header wrap-narrow">
+  <h1 class="page-title">Write for The AI Legal Review</h1>
+</header>
+
+<div class="prose wrap-narrow">
+  <p class="lede">Students and other invited contributors can submit work concerning artificial intelligence and the law. We welcome essays, analysis and commentary that make a clear, well-supported argument.</p>
+
+  <h2>Areas of interest</h2>
+  <ul class="topic-grid">
+    <li>Legal AI</li>
+    <li>AI regulation</li>
+    <li>Access to justice</li>
+    <li>Legal technology</li>
+    <li>AI and the courts</li>
+    <li>Professional responsibility</li>
+    <li>The future of legal practice</li>
+  </ul>
+  <p>These are starting points rather than limits. If your work sits elsewhere at the intersection of AI and law, we would still like to hear about it.</p>
+
+  <h2>What we look for</h2>
+  <ul>
+    <li>An argument, not just a summary of developments.</li>
+    <li>Accurate use of legislation, case law and secondary sources, with full references.</li>
+    <li>Writing that is accessible to students and practitioners alike.</li>
+    <li>Original work that you are entitled to publish.</li>
+  </ul>
+
+  <div class="submit-box">
+    {%- if site.submissionUrl %}
+    <p>Ready to submit, or have an idea you would like to discuss?</p>
+    <a class="button" href="{{ site.submissionUrl }}"{% if not site.submissionUrl.startsWith("mailto:") %} rel="noopener" target="_blank"{% endif %}>Submit your work</a>
+    {%- else %}
+    <p>To submit work or discuss an idea, contact the Society through Instagram. A dedicated submission form is coming soon.</p>
+    <a class="button" href="{{ site.instagram }}" rel="noopener" target="_blank">{% include "partials/instagram-icon.njk" %}<span>Contact the Society</span></a>
+    {%- endif %}
+  </div>
+</div>

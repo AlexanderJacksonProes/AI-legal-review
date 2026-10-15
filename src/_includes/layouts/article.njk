@@ -1,0 +1,36 @@
+---
+layout: layouts/base.njk
+bodyClass: page-article
+---
+<article class="article">
+  <header class="article-header wrap-narrow">
+    <p class="kicker"><a href="/publications/">Publications</a><span class="sep" aria-hidden="true">/</span>{{ category }}</p>
+    <h1 class="article-title">{{ title }}</h1>
+    {%- if question %}
+    <p class="article-question"><span class="label">Original question</span>“{{ question }}”</p>
+    {%- endif %}
+    <div class="article-meta">
+      <p class="byline"><span class="byline-author">{{ author }}</span><span class="sep" aria-hidden="true">|</span><time datetime="{{ page.date | isoDate }}">{{ page.date | monthYear }}</time><span class="sep" aria-hidden="true">·</span><span>{{ content | readingTime }}</span></p>
+      <p class="article-pubname">The AI Legal Review</p>
+    </div>
+  </header>
+
+  <div class="article-body prose wrap-narrow">
+    {{ content | safe }}
+  </div>
+
+  <footer class="article-footer wrap-narrow">
+    <p class="article-disclaimer">Views expressed are the author’s own and do not represent those of the University of Nottingham AI in Law Society or the University of Nottingham.</p>
+    <a class="button button--outline" href="/publications/"><span aria-hidden="true">←</span> Back to Publications</a>
+  </footer>
+</article>
+
+{%- set more = collections.publications | excludeUrl(page.url) %}
+{%- if more.length %}
+<section class="more wrap" aria-labelledby="more-heading">
+  <h2 id="more-heading" class="section-label">More from the Review</h2>
+  <div class="pub-list">
+    {%- for pub in more %}{% if loop.index <= 3 %}{% include "partials/publication-card.njk" %}{% endif %}{% endfor %}
+  </div>
+</section>
+{%- endif %}

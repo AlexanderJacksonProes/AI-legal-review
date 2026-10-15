@@ -1,0 +1,12 @@
+# Render Blueprint — deploys The AI Legal Review as a free static site.
+services:
+  - type: web
+    name: ai-legal-review
+    runtime: static
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./_site
+    pullRequestPreviewsEnabled: false
+    headers:
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=604800

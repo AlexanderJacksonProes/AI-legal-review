@@ -1,0 +1,41 @@
+---
+layout: layouts/base.njk
+title: The AI Legal Review
+bodyClass: page-home
+---
+<section class="masthead">
+  <div class="wrap">
+    <h1 class="masthead-title">The AI Legal Review</h1>
+    <p class="masthead-sub">{{ site.tagline }}</p>
+    <p class="masthead-desc">{{ site.description }}</p>
+  </div>
+</section>
+
+<section class="wrap latest" aria-labelledby="latest-heading">
+  <h2 id="latest-heading" class="section-label">Latest Publications</h2>
+  {%- set pubs = collections.publications %}
+  {%- if pubs.length %}
+    {%- set pub = pubs[0] %}{% set featured = true %}
+    {% include "partials/publication-card.njk" %}
+    {%- set featured = false %}
+    {%- if pubs.length > 1 %}
+    <div class="pub-list">
+      {%- for pub in pubs %}{% if loop.index > 1 and loop.index <= 7 %}{% include "partials/publication-card.njk" %}{% endif %}{% endfor %}
+    </div>
+    {%- endif %}
+    <p class="more-link"><a href="/publications/">All publications <span aria-hidden="true">→</span></a></p>
+  {%- endif %}
+</section>
+
+<section class="wrap home-aside" aria-label="About and submissions">
+  <div>
+    <h2 class="aside-title">About the Review</h2>
+    <p>The Review publishes thoughtful, evidence-led writing on how artificial intelligence is changing law, legal practice, regulation and access to justice.</p>
+    <p><a href="/about/">Read more <span aria-hidden="true">→</span></a></p>
+  </div>
+  <div>
+    <h2 class="aside-title">Write for the Review</h2>
+    <p>Students and invited contributors are welcome to submit work on AI and the law.</p>
+    <p><a href="/submit/">Submission guidance <span aria-hidden="true">→</span></a></p>
+  </div>
+</section>

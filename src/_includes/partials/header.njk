@@ -1,0 +1,23 @@
+{%- set nav = [
+  { label: "Home", url: "/" },
+  { label: "Publications", url: "/publications/" },
+  { label: "About", url: "/about/" },
+  { label: "Submit", url: "/submit/" }
+] -%}
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="wordmark" href="/" aria-label="{{ site.title }} — home">
+      <span class="wordmark-name">The AI Legal Review</span>
+      <span class="wordmark-sub">UoN AI in Law Society</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        {%- for item in nav %}
+        {%- set active = (page.url == item.url) or (item.url != "/" and page.url.startsWith(item.url)) %}
+        <li><a href="{{ item.url }}"{% if active %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {%- endfor %}
+        <li class="nav-ig"><a href="{{ site.instagram }}" rel="noopener" target="_blank" aria-label="The Society on Instagram (opens in a new tab)">{% include "partials/instagram-icon.njk" %}</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

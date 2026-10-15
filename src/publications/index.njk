@@ -1,0 +1,24 @@
+---
+layout: layouts/base.njk
+title: Publications
+description: The archive of articles, commentary and analysis published by The AI Legal Review.
+permalink: /publications/
+ogType: website
+---
+<header class="page-header wrap">
+  <h1 class="page-title">Publications</h1>
+  <p class="page-intro">Articles, commentary and analysis on artificial intelligence and the law, newest first.</p>
+</header>
+
+<section class="wrap archive" aria-label="All publications">
+  {%- set categories = [] %}
+  {%- for pub in collections.publications %}{% if pub.data.category not in categories %}{% set categories = (categories.push(pub.data.category), categories) %}{% endif %}{% endfor %}
+  {%- if categories.length > 1 %}
+  <p class="archive-topics"><span class="label">Topics</span>{% for c in categories %}<span class="topic">{{ c }}</span>{% endfor %}</p>
+  {%- endif %}
+  <ol class="archive-list">
+    {%- for pub in collections.publications %}
+    <li>{% include "partials/publication-card.njk" %}</li>
+    {%- endfor %}
+  </ol>
+</section>

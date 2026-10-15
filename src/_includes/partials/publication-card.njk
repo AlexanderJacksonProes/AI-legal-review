@@ -1,0 +1,10 @@
+{#- Reusable publication listing. Expects `pub` (a collection item) and optional `featured`. -#}
+<article class="pub-card{% if featured %} pub-card--featured{% endif %}">
+  <p class="kicker">{{ pub.data.category }}</p>
+  <h3 class="pub-title"><a class="pub-link" href="{{ pub.url }}">{{ pub.data.title }}</a></h3>
+  {%- if featured and pub.data.question %}
+  <p class="pub-question">“{{ pub.data.question }}”</p>
+  {%- endif %}
+  <p class="pub-desc">{{ pub.data.description }}</p>
+  <p class="byline"><span class="byline-author">{{ pub.data.author }}</span><span class="sep" aria-hidden="true">·</span><time datetime="{{ pub.date | isoDate }}">{{ pub.date | monthYear }}</time>{% if featured %}<span class="sep" aria-hidden="true">·</span><span>{{ pub.templateContent | readingTime }}</span>{% endif %}</p>
+</article>
